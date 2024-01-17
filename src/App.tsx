@@ -1,13 +1,17 @@
-import { Header } from "./components/Header";
 import "./index.css";
+import { Container } from "./style/Container.styled";
+import { LeftMenu } from "./components/LeftMenu";
+import { Main } from "./components/Content";
+import { RightMenu } from "./components/RightMenu";
 
 function App() {
   return (
     <>
-      <Header />
-      <div>
-        <h1>Hello World</h1>
-      </div>
+      <Container>
+        <LeftMenu />
+        <Main />
+        <RightMenu />
+      </Container>
     </>
   );
 }

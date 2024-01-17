@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoGrotwitter from "../assets/dark_color/LOGO_GROWTWEET.svg";
+import logoGrotwitter from "../assets/light_color/logo_growtweet.svg";
 
 const HeaderStyled = styled.div`
   color: red;
