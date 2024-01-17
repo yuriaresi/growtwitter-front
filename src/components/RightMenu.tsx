@@ -7,8 +7,10 @@ const AsideStyled = styled.aside`
 
 export function RightMenu() {
   return (
-    <AsideStyled id="right">
-      <p>Right Menu</p>
+    <AsideStyled>
+      <div>
+        <p> right</p>
+      </div>
     </AsideStyled>
   );
 }
