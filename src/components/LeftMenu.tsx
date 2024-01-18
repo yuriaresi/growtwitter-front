@@ -65,6 +65,7 @@ const NavStyled = styled.nav`
     margin-top: 30px;
     font-size: 20px;
     margin-left: auto;
+    background-color: black;
     
     &:hover{
       cursor: pointer;
