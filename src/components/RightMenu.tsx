@@ -7,9 +7,9 @@ const AsideStyled = styled.aside`
     padding: 10px;
     background-color: rgb(29, 31, 35);
     border-radius: 10px;
-    height: 320px;
     width: 350px;
     margin: 50px;
+    display: inline-block;
 
     h1 {
       color: rgb(220, 223, 224);

@@ -6,5 +6,5 @@ export const Container = styled.div`
   flex-direction: row;
   margin: auto;
 
-  max-width: 1000px;
+  max-width: 1300px;
 `;

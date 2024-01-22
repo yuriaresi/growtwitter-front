@@ -116,8 +116,8 @@ export function LeftMenu() {
       </div>
 
       <div id="bot-side">
-        <div id="divCard">
-          <CardUsuario nome="batman" nickUsuario="@Darkness" />
+        <div >
+          <CardUsuario nome="batman" nickUsuario="@DarkKnight" />
         </div>
         <div id="div-bota-sair">
           <button id="botao-sair">Sair</button>

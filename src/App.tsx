@@ -1,17 +1,12 @@
 import "./index.css";
-import { Container } from "./style/Container.styled";
-import { LeftMenu } from "./components/LeftMenu";
-import { Main } from "./components/Content";
-import { RightMenu } from "./components/RightMenu";
+
+import { RouterProvider } from "react-router-dom";
+import { routes } from "./routes/routes";
 
 function App() {
   return (
     <>
-      <Container>
-        <LeftMenu />
-        <Main />
-        <RightMenu />
-      </Container>
+    <RouterProvider router={routes}/>
     </>
   );
 }
