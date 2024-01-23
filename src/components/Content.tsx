@@ -22,16 +22,16 @@ const MainStyled = styled.main`
     background-color: #888;
     border-radius: 6px;
   }
- #teste{
-  position: fixed;
- width:39.7%;
- backdrop-filter: blur(10px);
- 
- }
+  #teste {
+    position: fixed;
+    /* width:39.7%; */
+    flex: 1;
+    backdrop-filter: blur(10px);
+  }
 
- #mainTeste{
-  margin-top: 70px;
- }
+  #mainTeste {
+    margin-top: 70px;
+  }
 
   #divHeader {
     display: flex;
@@ -42,7 +42,6 @@ const MainStyled = styled.main`
     padding: 0px 15px;
     border-left: none;
     border-right: none;
-    
 
     h1 {
       font-size: 25px;
@@ -114,13 +113,15 @@ export function Main() {
       return;
     }
     setUsuario(JSON.parse(usuarioLogado));
-    ListarTweets();
-  }, [tweet]);
+    setTimeout(() => {
+      ListarTweets();
+    }, 500);
+  }, []);
 
   const ListarTweets = async () => {
     try {
       const result = await axios.get("http://localhost:3333/tweets");
-      setTweet(result.data.data);
+      setTweet(result.data.data.reverse());
     } catch (error: any) {
       setTweet([]);
       console.log(error);
@@ -156,7 +157,7 @@ export function Main() {
           <h1>Página inicial</h1>
         </div>
       </header>
-      <main id="mainTeste" >
+      <main id="mainTeste">
         <div id="divTextArea">
           <div id="divCard">
             <CardUsuario tamanho="p" image={usuario?.image} />
