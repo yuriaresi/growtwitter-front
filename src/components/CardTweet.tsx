@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { Tweet } from "../models/Tweets.model";
-import IconeLike from "../assets/dark_color/ICONE_CURTIDAS.svg";
-import IconeReTweet from "../assets/dark_color/ICONE_RETWEET.svg";
 interface CardTweetProps {
   tweet: Tweet;
 }
@@ -60,13 +58,6 @@ export function CardTweet(props: CardTweetProps) {
           <br />
           <p>{props.tweet.conteudo}</p>
         </div>
-        {/* <div id="divIcones">
-          <div>
-            <img src={IconeLike} alt="icone like" />
-            <img src={IconeReTweet} alt="icone retweet" />
-          </div>
-          
-        </div> */}
       </DivPrincipal>
     </>
   );
