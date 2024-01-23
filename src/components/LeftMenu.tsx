@@ -104,12 +104,12 @@ export function LeftMenu() {
           <Icons icon={logoGrowtwitter} />
         </div>
         <a href="#home">
-          <div id="div-1">
+          <div >
             <div>
               <Icons icon={iconePaginaInicial} />
             </div>
             <div>
-              <p>Pagina Inicial</p>
+              <p>Página Inicial</p>
             </div>
           </div>
         </a>

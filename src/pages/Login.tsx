@@ -8,7 +8,7 @@ const Input = styled.input`
   color: black;
 `;
 const BotaoConta = styled.button`
-  background-color: black;
+  background-color: white;
   color: rgb(26, 140, 216);
   border: none;
   margin-left: 4px;
@@ -54,6 +54,7 @@ const DivPrincipal = styled.div`
     h1 {
       margin-top: 100px;
       margin-left: 50px;
+    
 
       font-size: 40px;
     }
@@ -73,6 +74,9 @@ const DivPrincipal = styled.div`
     align-items: center;
 
     span {
+      color: black;
+    }
+    h1{
       color: black;
     }
   }

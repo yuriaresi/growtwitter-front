@@ -27,11 +27,13 @@ const DivModal = styled.div`
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    
   }
 
   form {
     display: grid;
     gap: 15px;
+   
   }
 
   div {
@@ -42,7 +44,7 @@ const DivModal = styled.div`
   span {
     font-weight: bold;
     margin-bottom: 5px;
-    color: gray;
+    color: white  !important;
   }
 
   input {
@@ -118,7 +120,7 @@ export function Modal({ isOpen, setOpen }: ModalProps) {
           <div id="modal">
             <div>
               <div>
-                <form onSubmit={CriarUsuario}>
+                <form id="formDiv" onSubmit={CriarUsuario}>
                   <div>
                     <span>Nome:</span>
                     <input

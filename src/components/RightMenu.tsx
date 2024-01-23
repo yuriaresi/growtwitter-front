@@ -10,6 +10,7 @@ const AsideStyled = styled.aside`
     width: 350px;
     margin: 50px;
     display: inline-block;
+    
 
     h1 {
       color: rgb(220, 223, 224);
@@ -19,6 +20,12 @@ const AsideStyled = styled.aside`
     }
     a {
       color: rgb(29, 148, 228);
+      text-decoration: none;
+      &:hover {
+    text-decoration: underline;
+    color:rgb(12, 101, 161);
+    cursor: pointer;
+  }
     }
   }
 `;
@@ -41,7 +48,7 @@ export function RightMenu() {
         <p>Cinema - Assunto do momento</p>
         <h1>Assunto sobre Filmes e Cinema</h1>
         <br />
-        <a href="http://">Mostrar Mais</a>
+        <a href="">Mostrar Mais</a>
         <br />
       </div>
     </AsideStyled>

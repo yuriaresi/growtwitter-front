@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import imagePerfil from "../assets/perfilteste.jpg";
 
 const ImgCard = styled.img<{$tamanho?: string}>`
   width:60px;
@@ -24,7 +23,6 @@ interface CardProps {
   tamanho?: string
 }
 
-export const ImageCard = imagePerfil;
 
 export function CardUsuario(props: CardProps) {
   return (
