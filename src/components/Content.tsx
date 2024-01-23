@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import { CardUsuario } from "./CardUsuario";
+import { useEffect, useState } from "react";
+import { Usuario } from "../models/Usuario.model";
+import { Tweet } from "../models/Tweets.model";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ConteudoTweet } from "./ConteudoTweet";
 
 const MainStyled = styled.main`
   background-color: black;
@@ -7,9 +13,9 @@ const MainStyled = styled.main`
   border: solid 1px gray;
   border-radius: 5px;
   border-top: none;
+  overflow: none;
 
   #divHeader {
-    
     display: flex;
     border: solid 1px gray;
     border-top: none;
@@ -19,15 +25,14 @@ const MainStyled = styled.main`
     border-left: none;
     border-right: none;
 
-    h1{
+    h1 {
       font-size: 25px;
-    
     }
   }
 
   #divCard {
     margin: 15px;
-    width:50px;
+    
   }
 
   #divTextArea {
@@ -44,8 +49,8 @@ const MainStyled = styled.main`
       background-color: black;
       border: none;
       margin-top: 25px;
-      font-size:24px;
-      outline:none;
+      font-size: 24px;
+      outline: none;
     }
   }
 
@@ -78,6 +83,54 @@ const MainStyled = styled.main`
 `;
 
 export function Main() {
+  const [usuario, setUsuario] = useState<Usuario>();
+  const [tweet, setTweet] = useState<Tweet[]>([]);
+  const usuarioLogado = localStorage.getItem("usuario");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!usuarioLogado) {
+      alert("Sessão expirada, faça login novamente");
+      navigate("/login");
+      setTweet([]);
+      return;
+    }
+    setUsuario(JSON.parse(usuarioLogado));
+    ListarTweets();
+  }, [tweet]);
+
+  const ListarTweets = async () => {
+    try {
+      const result = await axios.get("http://localhost:3333/tweets");
+      setTweet(result.data.data);
+    } catch (error: any) {
+      setTweet([]);
+      console.log(error);
+      alert("Error na requisição");
+    }
+  };
+
+  const CriarTweets = async (event: any) => {
+    try {
+      const body = { conteudo: event.target.criarTweet.value };
+      console.log(!body);
+      if (body.conteudo == "") {
+        return alert("Preencha o campo vazio");
+      }
+
+      const result = await axios.post(
+        `http://localhost:3333/usuario/${usuario?.id}/tweet`,
+        body,
+        { headers: { Authorization: usuario?.token } }
+      );
+      alert("Tweet Criado com sucesso!");
+    } catch (error: any) {
+      console.log(error);
+      alert("Error na requisição");
+    }
+  };
+  console.log(usuario);
+
   return (
     <MainStyled>
       <header>
@@ -88,10 +141,10 @@ export function Main() {
       <main>
         <div id="divTextArea">
           <div id="divCard">
-            <CardUsuario tamanho="p" />
+            <CardUsuario tamanho="p" image={usuario?.image} />
           </div>
           <div id="divFormulario">
-            <form action="">
+            <form onSubmit={CriarTweets}>
               <textarea
                 placeholder="O que está acontecendo?"
                 name="criarTweet"
@@ -104,6 +157,9 @@ export function Main() {
               </div>
             </form>
           </div>
+        </div>
+        <div>
+          <ConteudoTweet tweets={tweet} />
         </div>
       </main>
     </MainStyled>

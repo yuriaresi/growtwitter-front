@@ -5,6 +5,9 @@ import iconeExplorar from "../assets/dark_color/EXPLORAR_FILL.svg";
 import iconePerfil from "../assets/dark_color/PERFIL_FILL.svg";
 import { Icons } from "./Icon";
 import { CardUsuario } from "./CardUsuario";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Usuario } from "../models/Usuario.model";
 
 const NavStyled = styled.nav`
   min-width: 250px;
@@ -55,27 +58,45 @@ const NavStyled = styled.nav`
     }
   }
 
-  #div-bota-sair{
+  #div-bota-sair {
     display: flex;
-  justify-content: flex-end;
+    justify-content: flex-end;
 
-  #botao-sair {
-  
-    border: none;
-    margin-top: 30px;
-    font-size: 20px;
-    margin-left: auto;
-    background-color: black;
-    
-    &:hover{
-      cursor: pointer;
+    #botao-sair {
+      border: none;
+      margin-top: 30px;
+      font-size: 20px;
+      margin-left: auto;
+      background-color: black;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
-    
-  }
   }
 `;
 
 export function LeftMenu() {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("usuario");
+    navigate("/login");
+  };
+
+  const [usuario, setUsuario] = useState<Usuario>();
+  const usuarioLogado = localStorage.getItem("usuario");
+
+  console.log(usuarioLogado);
+  useEffect(() => {
+    if (!usuarioLogado) {
+      alert("Sessão expirada, faça login novamente");
+      navigate("/login");
+      return;
+    }
+
+    setUsuario(JSON.parse(usuarioLogado));
+  }, []);
+
   return (
     <NavStyled>
       <div id="top-side">
@@ -112,15 +133,21 @@ export function LeftMenu() {
             </div>
           </div>
         </a>
-        <button id="button-tweetar">Tweetar</button>
+        <button id="button-tweetar">Tweetar </button>
       </div>
 
       <div id="bot-side">
-        <div >
-          <CardUsuario nome="batman" nickUsuario="@DarkKnight" />
+        <div>
+          <CardUsuario
+            nome={usuario?.nome}
+            nickUsuario={usuario?.nomeUsuario}
+            image={usuario?.image}
+          />
         </div>
         <div id="div-bota-sair">
-          <button id="botao-sair">Sair</button>
+          <button onClick={logout} id="botao-sair">
+            Sair
+          </button>
         </div>
       </div>
     </NavStyled>

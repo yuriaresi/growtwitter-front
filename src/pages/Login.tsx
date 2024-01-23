@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -11,6 +12,14 @@ const Teste = styled.input`
 
 export function Login() {
   const navigate = useNavigate();
+
+  const usuarioLogado = localStorage.getItem("usuario");
+  useEffect(() => {
+    if (usuarioLogado) {
+      navigate("/");
+      return;
+    }
+  }, []);
 
   const fazerLogin = async (event: any) => {
     try {
