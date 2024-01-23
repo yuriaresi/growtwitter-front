@@ -13,7 +13,25 @@ const MainStyled = styled.main`
   border: solid 1px gray;
   border-radius: 5px;
   border-top: none;
-  overflow: none;
+  overflow: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+  }
+ #teste{
+  position: fixed;
+ width:39.7%;
+ backdrop-filter: blur(10px);
+ 
+ }
+
+ #mainTeste{
+  margin-top: 70px;
+ }
 
   #divHeader {
     display: flex;
@@ -24,6 +42,7 @@ const MainStyled = styled.main`
     padding: 0px 15px;
     border-left: none;
     border-right: none;
+    
 
     h1 {
       font-size: 25px;
@@ -32,7 +51,6 @@ const MainStyled = styled.main`
 
   #divCard {
     margin: 15px;
-    
   }
 
   #divTextArea {
@@ -133,12 +151,12 @@ export function Main() {
 
   return (
     <MainStyled>
-      <header>
+      <header id="teste">
         <div id="divHeader">
           <h1>Página inicial</h1>
         </div>
       </header>
-      <main>
+      <main id="mainTeste" >
         <div id="divTextArea">
           <div id="divCard">
             <CardUsuario tamanho="p" image={usuario?.image} />

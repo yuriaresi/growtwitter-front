@@ -18,10 +18,13 @@ const DivPrincipal = styled.div`
 
   #divImage {
     align-self: baseline;
+    padding-left: 10px;
   }
 
   div {
-    padding: 10px;
+    
+    padding-top:10px;
+    
     margin-bottom: 25px;
     h1 {
       margin-top: 10px;
@@ -39,6 +42,7 @@ const ImagePerfil = styled.img`
   border-radius: 50%;
   border: solid 2px gray;
   margin-right: 14px;
+  margin-top:10px;
 `;
 
 export function CardTweet(props: CardTweetProps) {
