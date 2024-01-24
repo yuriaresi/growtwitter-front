@@ -8,6 +8,7 @@ import { CardUsuario } from "./CardUsuario";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Usuario } from "../models/Usuario.model";
+import { ModalTweet } from "./ModalTweet";
 
 const NavStyled = styled.nav`
   min-width: 250px;
@@ -85,6 +86,7 @@ export function LeftMenu() {
 
   const [usuario, setUsuario] = useState<Usuario>();
   const usuarioLogado = localStorage.getItem("usuario");
+  const [open, setOpen] = useState<boolean>(false);
 
   console.log(usuarioLogado);
   useEffect(() => {
@@ -104,7 +106,7 @@ export function LeftMenu() {
           <Icons icon={logoGrowtwitter} />
         </div>
         <a href="#home">
-          <div >
+          <div>
             <div>
               <Icons icon={iconePaginaInicial} />
             </div>
@@ -133,7 +135,8 @@ export function LeftMenu() {
             </div>
           </div>
         </a>
-        <button id="button-tweetar">Tweetar </button>
+        <button onClick={() => setOpen(!open)} id="button-tweetar">Tweetar </button>
+        <ModalTweet isOpen={open} setOpen={setOpen} />
       </div>
 
       <div id="bot-side">

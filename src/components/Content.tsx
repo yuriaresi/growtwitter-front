@@ -13,35 +13,35 @@ const MainStyled = styled.main`
   border: solid 1px gray;
   border-radius: 5px;
   border-top: none;
-  overflow: scroll;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 3px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 6px;
-  }
-  #teste {
-    position: fixed;
-    /* width:39.7%; */
-    flex: 1;
-    backdrop-filter: blur(10px);
-  }
+  display: flex;
+  flex-direction: column;
 
   #mainTeste {
-    margin-top: 70px;
+    
+    
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 6px;
+    }
   }
 
   #divHeader {
     display: flex;
     border: solid 1px gray;
     border-top: none;
-    height: 70px;
+    height: 150px;
+    backdrop-filter: blur(1px);
+    width: 100%;
     align-items: center;
     padding: 0px 15px;
     border-left: none;
     border-right: none;
+
+    ;
 
     h1 {
       font-size: 25px;
@@ -148,15 +148,13 @@ export function Main() {
       alert("Error na requisição");
     }
   };
-  console.log(usuario);
 
   return (
     <MainStyled>
-      <header id="teste">
-        <div id="divHeader">
-          <h1>Página inicial</h1>
-        </div>
-      </header>
+      <div id="divHeader">
+        <h1>Página inicial</h1>
+      </div>
+
       <main id="mainTeste">
         <div id="divTextArea">
           <div id="divCard">

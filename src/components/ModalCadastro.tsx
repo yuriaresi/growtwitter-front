@@ -14,7 +14,7 @@ const DivModal = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.228);
+  background-color: rgba(0, 0, 0, 0.441);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,13 +27,12 @@ const DivModal = styled.div`
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    
+    border: solid 2px gray;
   }
 
   form {
     display: grid;
     gap: 15px;
-   
   }
 
   div {
@@ -44,7 +43,7 @@ const DivModal = styled.div`
   span {
     font-weight: bold;
     margin-bottom: 5px;
-    color: white  !important;
+    color: white !important;
   }
 
   input {
@@ -65,6 +64,7 @@ const DivModal = styled.div`
     height: 40px;
     font-size: 20px;
     align-self: center;
+    color: white;
     &:hover {
       background-color: rgb(19, 99, 152);
       cursor: pointer;

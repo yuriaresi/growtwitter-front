@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Modal } from "../components/ModalComponent";
+import { Modal } from "../components/ModalCadastro";
 
 const Input = styled.input`
   color: black;
+  padding: 5px;
 `;
 const BotaoConta = styled.button`
-  background-color: white;
+  background-color: rgba(8, 8, 8, 0.707);
   color: rgb(26, 140, 216);
   border: none;
   margin-left: 4px;
@@ -44,41 +45,51 @@ const DivPrincipal = styled.div`
 
   #DivTexto {
     background-color: rgb(29, 155, 240);
-    width: 700px;
-    height: 500px;
+    width: 600px;
+    height: 400px;
     text-align: start;
     display: block;
     justify-content: center;
     border-radius: 10px;
     border-right: none;
     h1 {
-      margin-top: 100px;
+      margin-top: 50px;
       margin-left: 50px;
-    
 
       font-size: 40px;
     }
     p {
-      margin-left: 50px;
+      margin-right:30px;
+      margin-left: 30px;
       font-size: 20px;
     }
   }
 
   #divFormulario {
-    background-color: white;
-    color: black;
+    display: grid;
+    background-color:rgba(8, 8, 8, 0.707);
     width: 400px;
-    height: 500px;
-    display: flex;
+    height: 400px;
     text-align: center;
     align-items: center;
+    border-radius:10px;
 
-    span {
-      color: black;
+    #h1Login{
+      color: white;
+      font-size: 50px;
+      margin-bottom: 50px;
     }
-    h1{
-      color: black;
+    span{
+      margin-right: 10px;
+      margin-left: 10px;
     }
+
+   input{
+    border-radius: 30px;
+    height: 30px;
+    margin-bottom: 30px;
+  
+   }
   }
 `;
 
@@ -134,6 +145,7 @@ export function Login() {
         </div>
         <div id="divFormulario">
           <form onSubmit={fazerLogin}>
+            <h1 id="h1Login">Login</h1>
             <div>
               <span>Email:</span>
               <Input type="email" name="email" required />
