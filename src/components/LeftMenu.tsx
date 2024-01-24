@@ -46,6 +46,10 @@ const NavStyled = styled.nav`
 
   a {
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
 
     div {
       display: flex;
@@ -88,7 +92,6 @@ export function LeftMenu() {
   const usuarioLogado = localStorage.getItem("usuario");
   const [open, setOpen] = useState<boolean>(false);
 
-  console.log(usuarioLogado);
   useEffect(() => {
     if (!usuarioLogado) {
       alert("Sessão expirada, faça login novamente");
@@ -105,7 +108,7 @@ export function LeftMenu() {
         <div id="logoGrow">
           <Icons icon={logoGrowtwitter} />
         </div>
-        <a href="#home">
+        <a onClick={() => navigate("/")}>
           <div>
             <div>
               <Icons icon={iconePaginaInicial} />
@@ -115,7 +118,7 @@ export function LeftMenu() {
             </div>
           </div>
         </a>
-        <a href="#explorar">
+        <a onClick={() => navigate("/explorar")}>
           <div>
             <div>
               <Icons icon={iconeExplorar} />
@@ -125,8 +128,8 @@ export function LeftMenu() {
             </div>
           </div>
         </a>
-        <a href="#perfil">
-          <div>
+        <a onClick={() => navigate("/perfil")}>
+          <div id="divPerfil">
             <div>
               <Icons icon={iconePerfil} />
             </div>
@@ -135,7 +138,9 @@ export function LeftMenu() {
             </div>
           </div>
         </a>
-        <button onClick={() => setOpen(!open)} id="button-tweetar">Tweetar </button>
+        <button onClick={() => setOpen(!open)} id="button-tweetar">
+          Tweetar{" "}
+        </button>
         <ModalTweet isOpen={open} setOpen={setOpen} />
       </div>
 
