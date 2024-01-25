@@ -100,7 +100,7 @@ export function ModalEditarUsuario({ isOpen, setOpen }: ModalProps) {
   }, []);
 
   const AtualizarUsuario = async (event: any) => {
-    event.preventDefault()
+    
 
     const body = {
       nome: event.target.nome.value || usuario?.nome,
@@ -119,6 +119,7 @@ export function ModalEditarUsuario({ isOpen, setOpen }: ModalProps) {
         { headers: { Authorization: usuario?.token } }
       );
       alert("Usuario Atualizado com sucesso");
+      
     } catch (error: any) {
       console.log(error);
       alert("Error na requisição");
