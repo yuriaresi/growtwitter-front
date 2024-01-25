@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const AsideStyled = styled.aside`
@@ -31,6 +32,7 @@ const AsideStyled = styled.aside`
 `;
 
 export function RightMenu() {
+  const navigate = useNavigate()
   return (
     <AsideStyled>
       <div>
@@ -48,7 +50,7 @@ export function RightMenu() {
         <p>Cinema - Assunto do momento</p>
         <h1>Assunto sobre Filmes e Cinema</h1>
         <br />
-        <a href="">Mostrar Mais</a>
+        <a onClick={()=>{navigate('/explorar')}}>Mostrar Mais</a>
         <br />
       </div>
     </AsideStyled>

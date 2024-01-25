@@ -6,6 +6,7 @@ import { Tweet } from "../models/Tweets.model";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ConteudoTweet } from "./ConteudoTweet";
+import { ModalEditarUsuario } from "./ModalEditarComponent";
 
 const MainStyled = styled.main`
   background-color: black;
@@ -13,6 +14,7 @@ const MainStyled = styled.main`
   border: solid 1px gray;
   border-radius: 5px;
   border-top: none;
+  border-bottom: none;
   display: flex;
   flex-direction: column;
 
@@ -31,7 +33,7 @@ const MainStyled = styled.main`
     display: flex;
     border: solid 1px gray;
     border-top: none;
-    height: 150px;
+    height: 100px;
     backdrop-filter: blur(1px);
     width: 100%;
     align-items: center;
@@ -43,14 +45,36 @@ const MainStyled = styled.main`
       font-size: 25px;
     }
   }
+  #divBotao {
+    display: flex;
+    align-self: flex-end;
+  }
+
+  #botaoEditar {
+    border: none;
+    background-color: black;
+    display: flex;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 5px 15px;;
+    &:hover{
+      cursor: pointer;
+      background-color: #ffffff26;
+      
+    }
+  }
 
   #divCard {
     margin: 15px;
+  
   }
 
   #divPerfilcard {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     border: solid 1px gray;
     border-right: none;
     border-top: none;
@@ -58,21 +82,19 @@ const MainStyled = styled.main`
 
     h1 {
       font-size: 25px;
-      margin-left: 25px;
-      margin-top: 25px;
+      margin-top: 30px;
     }
     p {
       font-size: 25px;
-      margin-left: 25px;
-      margin-bottom: 30px;
     }
   }
   #divImg {
+    display:flex;
     img {
       width: 100px;
       height: 100px;
-      margin-top: 30px;
-      margin-left: 25px;
+      margin: 15px;
+      
     }
   }
 `;
@@ -82,6 +104,7 @@ export function PerfilComponent() {
   const [tweet, setTweet] = useState<Tweet[]>([]);
   const usuarioLogado = localStorage.getItem("usuario");
   const navigate = useNavigate();
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!usuarioLogado) {
@@ -106,7 +129,6 @@ export function PerfilComponent() {
         `http://localhost:3333/usuario/${usuario?.id}/tweet`,
         { headers: { Authorization: usuario?.token } }
       );
-      console.log(result.data.data);
 
       setTweet(result.data.data.reverse());
       console.log(result.data.data);
@@ -139,15 +161,20 @@ export function PerfilComponent() {
   return (
     <MainStyled>
       <div id="divHeader">
-        <h1>Perfil @{usuario?.nomeUsuario}</h1>
+        <h1>Perfil {usuario?.nomeUsuario}</h1>
       </div>
       <div id="divPerfilcard">
         <div id="divImg">
           <CardUsuario image={usuario?.image} />
+          <div>
+            <h1>{usuario?.nome}</h1>
+            <p>{usuario?.nomeUsuario}</p>
+          </div>
         </div>
-        <div>
-          <h1>{usuario?.nome}</h1>
-          <p>@{usuario?.nomeUsuario}</p>
+
+        <div id="divBotao">
+          <button onClick={() => setOpen(!open)} id="botaoEditar">Editar Perfil</button>
+          <ModalEditarUsuario isOpen={open} setOpen={setOpen} />
         </div>
       </div>
 

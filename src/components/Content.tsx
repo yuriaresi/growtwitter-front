@@ -13,6 +13,7 @@ const MainStyled = styled.main`
   border: solid 1px gray;
   border-radius: 5px;
   border-top: none;
+  border-bottom: none;
   display: flex;
   flex-direction: column;
 
