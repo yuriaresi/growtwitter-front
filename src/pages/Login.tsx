@@ -112,7 +112,7 @@ export function Login() {
         senha: event.target.senha.value,
       };
 
-      const result = await api.post("http://localhost:3333/login", body);
+      const result = await api.post("https://api-growtwitter-qxnp.onrender.com", body);
 
       console.log(result.data.data);
       alert("Login realizado com sucesso!");
