@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Usuario } from "../models/Usuario.model";
 import { Tweet } from "../models/Tweets.model";
 import { api } from "../services/api,services";
+import { useNavigate } from "react-router-dom";
 interface ModalProps {
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
@@ -118,6 +119,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
     const [usuario, setUsuario] = useState<Usuario>();
     const usuarioLogado = localStorage.getItem("usuario");
     const [_, setTweet] = useState<Tweet[]>([]);
+    const navigate = useNavigate()
     useEffect(() => {
       if (!usuarioLogado) {
         alert("Sessão expirada, faça login novamente");
@@ -142,6 +144,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
           body,
           { headers: { Authorization: usuario?.token } }
         );
+        navigate('/')
         alert("Tweet Criado com sucesso!");
       } catch (error: any) {
         console.log(error);
