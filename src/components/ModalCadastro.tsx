@@ -1,4 +1,3 @@
-import axios from "axios";
 import styled, { keyframes } from "styled-components";
 import { api } from "../services/api,services";
 
@@ -111,7 +110,7 @@ export function Modal({ isOpen, setOpen }: ModalProps) {
     };
 
     try {
-      const result = await api.post("http://localhost:3333/usuario", body);
+      await api.post("http://localhost:3333/usuario", body);
 
       alert("Usuario criado com sucesso");
     } catch (error: any) {

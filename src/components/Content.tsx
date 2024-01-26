@@ -18,8 +18,6 @@ const MainStyled = styled.main`
   flex-direction: column;
 
   #mainTeste {
-    
-    
     overflow: auto;
     &::-webkit-scrollbar {
       width: 3px;
@@ -41,8 +39,6 @@ const MainStyled = styled.main`
     padding: 0px 15px;
     border-left: none;
     border-right: none;
-
-    ;
 
     h1 {
       font-size: 25px;
@@ -137,7 +133,7 @@ export function Main() {
         return alert("Preencha o campo vazio");
       }
 
-      const result = await api.post(
+      await api.post(
         `http://localhost:3333/usuario/${usuario?.id}/tweet`,
         body,
         { headers: { Authorization: usuario?.token } }

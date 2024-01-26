@@ -2,7 +2,6 @@ import styled, { keyframes } from "styled-components";
 import { CardUsuario } from "./CardUsuario";
 import { useEffect, useState } from "react";
 import { Usuario } from "../models/Usuario.model";
-import axios from "axios";
 import { Tweet } from "../models/Tweets.model";
 import { api } from "../services/api,services";
 interface ModalProps {
@@ -118,7 +117,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
   if (isOpen) {
     const [usuario, setUsuario] = useState<Usuario>();
     const usuarioLogado = localStorage.getItem("usuario");
-    const [tweet, setTweet] = useState<Tweet[]>([]);
+    const [_, setTweet] = useState<Tweet[]>([]);
     useEffect(() => {
       if (!usuarioLogado) {
         alert("Sessão expirada, faça login novamente");
@@ -137,7 +136,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
           return alert("Preencha o campo vazio");
         }
 
-        const result = await api.post(
+       await api.post(
           `http://localhost:3333/usuario/${usuario?.id}/tweet`,
           body,
           { headers: { Authorization: usuario?.token } }

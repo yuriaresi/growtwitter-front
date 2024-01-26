@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Usuario } from "../models/Usuario.model";
 import { Tweet } from "../models/Tweets.model";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ConteudoTweet } from "./ConteudoTweet";
 import { ModalEditarUsuario } from "./ModalEditarComponent";
 import { api } from "../services/api,services";
@@ -34,7 +33,7 @@ const MainStyled = styled.main`
     display: flex;
     border: solid 1px gray;
     border-top: none;
-    height: 100px;
+    height: 200px;
     backdrop-filter: blur(1px);
     width: 100%;
     align-items: center;
@@ -140,24 +139,7 @@ export function PerfilComponent() {
     }
   };
 
-  const CriarTweets = async (event: any) => {
-    try {
-      const body = { conteudo: event.target.criarTweet.value };
-      if (body.conteudo === "") {
-        return alert("Preencha o campo vazio");
-      }
-
-      const result = await api.post(
-        `http://localhost:3333/usuario/${usuario?.id}/tweet`,
-        body,
-        { headers: { Authorization: usuario?.token } }
-      );
-      alert("Tweet Criado com sucesso!");
-    } catch (error: any) {
-      console.log(error);
-      alert("Error na requisição");
-    }
-  };
+  
 
   return (
     <MainStyled>
@@ -186,4 +168,5 @@ export function PerfilComponent() {
       </main>
     </MainStyled>
   );
+  
 }

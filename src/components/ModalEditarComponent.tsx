@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Usuario } from "../models/Usuario.model";
@@ -123,7 +122,7 @@ export function ModalEditarUsuario({ isOpen, setOpen }: ModalProps) {
     };
 
     try {
-      const result = await api.put(
+      await api.put(
         `http://localhost:3333/usuario/${usuario?.id}`,
         body,
         { headers: { Authorization: usuario?.token } }

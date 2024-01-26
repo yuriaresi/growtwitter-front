@@ -17,7 +17,7 @@ export function PaginaInicial() {
       return;
     }
     setUsuario(JSON.parse(usuarioLogado));
-  }, []);
+  }, [usuario]);
   return (
     <>
       <Container>
