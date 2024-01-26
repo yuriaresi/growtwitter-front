@@ -120,7 +120,7 @@ export function Login() {
       localStorage.setItem("usuario", JSON.stringify(result.data.data));
       navigate("/");
     } catch (error: any) {
-      console.log(error.response.data.message);
+      
       alert(error.response.data.message);
     }
   };
