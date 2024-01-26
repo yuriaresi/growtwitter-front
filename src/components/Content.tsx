@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Usuario } from "../models/Usuario.model";
 import { Tweet } from "../models/Tweets.model";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ConteudoTweet } from "./ConteudoTweet";
 import { api } from "../services/api,services";
 
