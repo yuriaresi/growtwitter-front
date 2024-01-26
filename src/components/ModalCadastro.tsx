@@ -1,10 +1,24 @@
 import axios from "axios";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { api } from "../services/api,services";
 
 interface ModalProps {
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
 }
+
+const animacaoModel = keyframes`
+ 
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
 const DivModal = styled.div`
   * {
     color: black;
@@ -28,6 +42,7 @@ const DivModal = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     border: solid 2px gray;
+    animation: ${animacaoModel} 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }
 
   form {
@@ -96,7 +111,7 @@ export function Modal({ isOpen, setOpen }: ModalProps) {
     };
 
     try {
-      const result = await axios.post("http://localhost:3333/usuario", body);
+      const result = await api.post("http://localhost:3333/usuario", body);
 
       alert("Usuario criado com sucesso");
     } catch (error: any) {

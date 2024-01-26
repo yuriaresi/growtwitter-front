@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ConteudoTweet } from "./ConteudoTweet";
 import { ModalEditarUsuario } from "./ModalEditarComponent";
+import { api } from "../services/api,services";
 
 const MainStyled = styled.main`
   background-color: black;
@@ -125,7 +126,7 @@ export function PerfilComponent() {
 
   const ListarTweets = async () => {
     try {
-      const result = await axios.get(
+      const result = await api.get(
         `http://localhost:3333/usuario/${usuario?.id}/tweet`,
         { headers: { Authorization: usuario?.token } }
       );
@@ -146,7 +147,7 @@ export function PerfilComponent() {
         return alert("Preencha o campo vazio");
       }
 
-      const result = await axios.post(
+      const result = await api.post(
         `http://localhost:3333/usuario/${usuario?.id}/tweet`,
         body,
         { headers: { Authorization: usuario?.token } }

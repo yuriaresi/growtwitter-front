@@ -1,13 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { CardUsuario } from "./CardUsuario";
 import { useEffect, useState } from "react";
 import { Usuario } from "../models/Usuario.model";
 import axios from "axios";
 import { Tweet } from "../models/Tweets.model";
+import { api } from "../services/api,services";
 interface ModalProps {
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
 }
+
+const animacaoModel = keyframes`
+ 
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
 
 const DivModal = styled.div`
  margin-bottom: 350px;
@@ -32,6 +45,7 @@ const DivModal = styled.div`
     border: solid 2px gray;
     display: flex;
     flex-direction: row;
+    animation: ${animacaoModel} 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55)
   }
   textarea {
     background-color: black;
@@ -123,7 +137,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
           return alert("Preencha o campo vazio");
         }
 
-        const result = await axios.post(
+        const result = await api.post(
           `http://localhost:3333/usuario/${usuario?.id}/tweet`,
           body,
           { headers: { Authorization: usuario?.token } }

@@ -6,6 +6,7 @@ import { Tweet } from "../models/Tweets.model";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ConteudoTweet } from "./ConteudoTweet";
+import { api } from "../services/api,services";
 
 const MainStyled = styled.main`
   background-color: black;
@@ -108,7 +109,6 @@ export function Main() {
 
   useEffect(() => {
     if (!usuarioLogado) {
-      alert("Sessão expirada, faça login novamente");
       navigate("/login");
       setTweet([]);
       return;
@@ -121,7 +121,7 @@ export function Main() {
 
   const ListarTweets = async () => {
     try {
-      const result = await axios.get("http://localhost:3333/tweets");
+      const result = await api.get("http://localhost:3333/tweets");
       setTweet(result.data.data.reverse());
     } catch (error: any) {
       setTweet([]);
@@ -138,7 +138,7 @@ export function Main() {
         return alert("Preencha o campo vazio");
       }
 
-      const result = await axios.post(
+      const result = await api.post(
         `http://localhost:3333/usuario/${usuario?.id}/tweet`,
         body,
         { headers: { Authorization: usuario?.token } }

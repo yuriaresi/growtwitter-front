@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Modal } from "../components/ModalCadastro";
+import { api } from "../services/api,services";
 
 const Input = styled.input`
   color: black;
@@ -112,7 +113,7 @@ export function Login() {
         senha: event.target.senha.value,
       };
 
-      const result = await axios.post("http://localhost:3333/login", body);
+      const result = await api.post("http://localhost:3333/login", body);
 
       console.log(result.data.data);
       alert("Login realizado com sucesso!");
@@ -126,7 +127,6 @@ export function Login() {
   };
 
   const [open, setOpen] = useState<boolean>(false);
-  console.log(open);
   return (
     <>
       <DivPrincipal>

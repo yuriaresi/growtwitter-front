@@ -1,12 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Usuario } from "../models/Usuario.model";
+import { api } from "../services/api,services";
 
 interface ModalProps {
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
 }
+
+const animacaoModel = keyframes`
+ 
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
 const DivModal = styled.div`
   * {
     color: black;
@@ -30,7 +43,10 @@ const DivModal = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     border: solid 2px gray;
+    animation: ${animacaoModel} 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55)
   }
+
+
 
   form {
     display: grid;
@@ -100,26 +116,19 @@ export function ModalEditarUsuario({ isOpen, setOpen }: ModalProps) {
   }, []);
 
   const AtualizarUsuario = async (event: any) => {
-    
-
     const body = {
       nome: event.target.nome.value || usuario?.nome,
       nomeUsuario: event.target.nomeUsuario.value || usuario?.nomeUsuario,
       image: event.target.imagem.value || usuario?.image,
     };
-   
 
-    
-
-    
     try {
-      const result = await axios.put(
+      const result = await api.put(
         `http://localhost:3333/usuario/${usuario?.id}`,
         body,
         { headers: { Authorization: usuario?.token } }
       );
       alert("Usuario Atualizado com sucesso");
-      
     } catch (error: any) {
       console.log(error);
       alert("Error na requisição");
