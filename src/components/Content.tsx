@@ -116,7 +116,7 @@ export function Main() {
 
   const ListarTweets = async () => {
     try {
-      const result = await api.get("http://localhost:3333/tweets");
+      const result = await api.get("https://api-growtwitter-qxnp.onrender.com/tweets");
       setTweet(result.data.data.reverse());
     } catch (error: any) {
       setTweet([]);
