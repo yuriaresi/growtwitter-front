@@ -33,7 +33,7 @@ const MainStyled = styled.main`
     display: flex;
     border: solid 1px gray;
     border-top: none;
-    height: 200px;
+    height: 0px;
     backdrop-filter: blur(1px);
     width: 100%;
     align-items: center;
@@ -126,7 +126,7 @@ export function PerfilComponent() {
   const ListarTweets = async () => {
     try {
       const result = await api.get(
-        `https://api-growtwitter-qxnp.onrender.com/${usuario?.id}/tweet`,
+        `https://api-growtwitter-qxnp.onrender.com/usuario/${usuario?.id}/tweet`,
         { headers: { Authorization: usuario?.token } }
       );
 
