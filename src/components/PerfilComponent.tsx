@@ -126,7 +126,7 @@ export function PerfilComponent() {
   const ListarTweets = async () => {
     try {
       const result = await api.get(
-        `http://localhost:3333/usuario/${usuario?.id}/tweet`,
+        `https://api-growtwitter-qxnp.onrender.com/${usuario?.id}/tweet`,
         { headers: { Authorization: usuario?.token } }
       );
 
