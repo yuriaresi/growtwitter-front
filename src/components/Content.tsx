@@ -134,7 +134,7 @@ export function Main() {
       }
 
       await api.post(
-        `https://api-growtwitter-qxnp.onrender.com/${usuario?.id}/tweet`,
+        `https://api-growtwitter-qxnp.onrender.com/usuario/${usuario?.id}/tweet`,
         body,
         { headers: { Authorization: usuario?.token } }
       );
