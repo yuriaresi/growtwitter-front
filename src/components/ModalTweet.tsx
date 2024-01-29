@@ -140,7 +140,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
         }
 
        await api.post(
-          `https://api-growtwitter-qxnp.onrender.com/usuario/${usuario?.id}/tweet`,
+          `http://localhost:3333/usuario/${usuario?.id}/tweet`,
           body,
           { headers: { Authorization: usuario?.token } }
         );

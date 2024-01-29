@@ -123,7 +123,7 @@ export function ModalEditarUsuario({ isOpen, setOpen }: ModalProps) {
 
     try {
       await api.put(
-        `https://api-growtwitter-qxnp.onrender.com/usuario/${usuario?.id}`,
+        `http://localhost:3333/usuario/${usuario?.id}`,
         body,
         { headers: { Authorization: usuario?.token } }
       );

@@ -116,7 +116,7 @@ export function Main() {
 
   const ListarTweets = async () => {
     try {
-      const result = await api.get("https://api-growtwitter-qxnp.onrender.com/tweets");
+      const result = await api.get("http://localhost:3333/tweets");
       setTweet(result.data.data.reverse());
     } catch (error: any) {
       setTweet([]);
@@ -134,7 +134,7 @@ export function Main() {
       }
 
       await api.post(
-        `https://api-growtwitter-qxnp.onrender.com/usuario/${usuario?.id}/tweet`,
+        `http://localhost:3333/usuario/${usuario?.id}/tweet`,
         body,
         { headers: { Authorization: usuario?.token } }
       );
