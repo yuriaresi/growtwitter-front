@@ -60,7 +60,7 @@ const DivPrincipal = styled.div`
       font-size: 40px;
     }
     p {
-      margin-right:30px;
+      margin-right: 30px;
       margin-left: 30px;
       font-size: 20px;
     }
@@ -68,29 +68,28 @@ const DivPrincipal = styled.div`
 
   #divFormulario {
     display: grid;
-    background-color:rgba(8, 8, 8, 0.707);
+    background-color: rgba(8, 8, 8, 0.707);
     width: 400px;
     height: 400px;
     text-align: center;
     align-items: center;
-    border-radius:10px;
+    border-radius: 10px;
 
-    #h1Login{
+    #h1Login {
       color: white;
       font-size: 50px;
       margin-bottom: 50px;
     }
-    span{
+    span {
       margin-right: 10px;
       margin-left: 10px;
     }
 
-   input{
-    border-radius: 30px;
-    height: 30px;
-    margin-bottom: 30px;
-  
-   }
+    input {
+      border-radius: 30px;
+      height: 30px;
+      margin-bottom: 30px;
+    }
   }
 `;
 
@@ -113,7 +112,10 @@ export function Login() {
         senha: event.target.senha.value,
       };
 
-      const result = await axios.post("https://api-growtwitter-qxnp.onrender.com/login", body);
+      const result = await axios.post(
+        "https://api-growtwitter-qxnp.onrender.com/login",
+        body
+      );
 
       console.log(result.data.data);
       alert("Login realizado com sucesso!");
@@ -121,7 +123,6 @@ export function Login() {
       localStorage.setItem("usuario", JSON.stringify(result.data.data));
       navigate("/");
     } catch (error: any) {
-      
       alert(error.response.data.message);
     }
   };
@@ -144,7 +145,7 @@ export function Login() {
           </p>
         </div>
         <div id="divFormulario">
-          <form onSubmit={fazerLogin}>
+          <form onSubmit={fazerLogin} method="post">
             <h1 id="h1Login">Login</h1>
             <div>
               <span>Email:</span>
