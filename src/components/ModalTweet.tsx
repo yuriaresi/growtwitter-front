@@ -130,7 +130,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
     }, []);
 
     const CriarTweets = async (event: any) => {
-      event.preventDefault()
+      // event.preventDefault()
       try {
         const body = { conteudo: event.target.criarTweet.value };
         console.log(!body);

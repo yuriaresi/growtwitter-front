@@ -33,7 +33,7 @@ const MainStyled = styled.main`
     display: flex;
     border: solid 1px gray;
     border-top: none;
-    height: 0px;
+    height: 150px;
     backdrop-filter: blur(1px);
     width: 100%;
     align-items: center;

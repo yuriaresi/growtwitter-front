@@ -128,7 +128,7 @@ export function LeftMenu() {
             </div>
           </div>
         </a>
-        <a onClick={() => navigate("/perfil")}>
+        <button onClick={() => navigate("/perfil")}>
           <div id="divPerfil">
             <div>
               <Icons icon={iconePerfil} />
@@ -137,7 +137,7 @@ export function LeftMenu() {
               <p>Perfil</p>
             </div>
           </div>
-        </a>
+        </button>
         <button onClick={() => setOpen(!open)} id="button-tweetar">
           Tweetar{" "}
         </button>
