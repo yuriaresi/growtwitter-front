@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Modal } from "../components/ModalCadastro";
-import { api } from "../services/api,services";
+// import { api } from "../services/api,services";
+import axios from "axios";
 
 const Input = styled.input`
   color: black;
@@ -112,7 +113,7 @@ export function Login() {
         senha: event.target.senha.value,
       };
 
-      const result = await api.post("/login", body);
+      const result = await axios.post("https://api-growtwitter-qxnp.onrender.com/login", body);
 
       console.log(result.data.data);
       alert("Login realizado com sucesso!");
