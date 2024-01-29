@@ -110,7 +110,7 @@ export function Modal({ isOpen, setOpen }: ModalProps) {
     };
 
     try {
-      await api.post("http://localhost:3333/usuario", body);
+      await api.post("/usuario", body);
 
       alert("Usuario criado com sucesso");
     } catch (error: any) {

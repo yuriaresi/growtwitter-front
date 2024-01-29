@@ -139,7 +139,7 @@ export function ModalTweet({ isOpen, setOpen }: ModalProps) {
         }
 
        await api.post(
-          `http://localhost:3333/usuario/${usuario?.id}/tweet`,
+          `/usuario/${usuario?.id}/tweet`,
           body,
           { headers: { Authorization: usuario?.token } }
         );

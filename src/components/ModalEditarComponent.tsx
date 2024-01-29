@@ -123,7 +123,7 @@ export function ModalEditarUsuario({ isOpen, setOpen }: ModalProps) {
 
     try {
       await api.put(
-        `http://localhost:3333/usuario/${usuario?.id}`,
+        `/usuario/${usuario?.id}`,
         body,
         { headers: { Authorization: usuario?.token } }
       );
