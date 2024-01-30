@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Modal } from "../components/ModalCadastro";
-// import { api } from "../services/api,services";
-import axios from "axios";
+import { api } from "../services/api,services";
 
 const Input = styled.input`
   color: black;
@@ -112,8 +111,8 @@ export function Login() {
         senha: event.target.senha.value,
       };
 
-      const result = await axios.post(
-        "https://api-growtwitter-qxnp.onrender.com/login",
+      const result = await api.post(
+        "/login",
         body
       );
 
