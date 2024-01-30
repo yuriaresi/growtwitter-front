@@ -107,6 +107,7 @@ export function Modal({ isOpen, setOpen }: ModalProps) {
       nomeUsuario: event.target.nomeUsuario.value,
       email: event.target.email.value,
       senha: event.target.senha.value,
+      image: event.target.imagem.value,
     };
 
     try {
@@ -169,6 +170,15 @@ export function Modal({ isOpen, setOpen }: ModalProps) {
                       placeholder="Digite sua senha"
                       name="senha"
                       id="senha"
+                    />
+                  </div>
+                  <div>
+                    <span>Imagem:</span>
+                    <input
+                      type="text"
+                      placeholder="Link da imagem"
+                      name="imagem"
+                      id="imagem"
                     />
                   </div>
                   <div>
